@@ -16,9 +16,7 @@ class Post
      */
     private $id;
 
-    // add your own fields
-
-
+ 
     /**
      * @ORM\Column(type="string", length=100, nullable=false)
      */
