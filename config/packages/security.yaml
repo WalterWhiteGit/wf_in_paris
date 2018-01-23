@@ -1,0 +1,40 @@
+security:
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        in_memory:
+            memory:
+               users:
+                   admin:
+                       password: $2y$12$46EVu7X2YfaTp8JInVBwauYz.4Eq04qvAhnQOGBRGWcwGPvbA0lVa
+                       roles: 'ROLE_ADMIN'
+
+    encoders:
+        Symfony\Component\Security\Core\User\User:
+            algorithm: bcrypt
+            cost: 12
+
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: ~
+            # activate different ways to authenticate
+            #http_basic: ~
+            form_login:
+                login_path: app.security.login
+                check_path: app.security.login
+                default_target_path: app.security.redirect
+
+            logout:
+                path: /logout
+                target : /accueil
+
+    access_control:
+            # require ROLE_ADMIN ffor /admin
+            - { path: ^/admin, roles: ROLES_ADMIN }
+            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+
+            # form_login: ~
+            # https://symfony.com/doc/current/security/form_login_setup.html
