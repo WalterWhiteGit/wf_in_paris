@@ -1,0 +1,22 @@
+{% extends 'include/base.html.twig' %}
+
+
+{% block main %}
+    <main>
+
+    <section class="contain-country">
+
+        {% for country in countries %}
+            <div>
+                <img src="{{ asset(country) }}" alt="">
+
+            </div>
+        {% endfor %}
+
+
+    </section>
+    </main>
+
+
+
+{% endblock %}

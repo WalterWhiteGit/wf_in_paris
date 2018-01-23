@@ -1,17 +1,36 @@
 {% extends 'include/base.html.twig' %}
 
-{% block body%}
+{% block stylesheets  %}
 
-        {% block header %}
+    <link rel="stylesheet" href="{{ asset ('css/homepage/homepage.css') }}">
 
-            <h1>World Food In Paris</h1>
+    {% endblock %}
 
-            {% endblock %}
+{% block main%}
+
 
     <main>
 
-        <h3>Ou manger à Paris ? </h3>
+        <h1 class="title-homepage">{{ 'title' | trans ({},'messages') }} ? </h1>
+        <p>{{ 'welcome' | trans ({},'messages') }}</p>
+
+        <section class="contain-menu">
+
+            <div>
+                <h2 class="choice-menu">{{ 'country' | trans ({},'messages') }}</h2>
+                <a href="{{ url('app.menu.country') }}"><img class="img-menu" src="{{ asset('/img/menu/blog-menu.jpg') }}" alt=""></a>
+                    </div>
+            <div>
+                <h2 class="choice-menu">{{ 'food'| trans ({}, 'messages') }}</h2>
+                    </div>
+            <div>
+                <h2 class="choice-menu">{{ 'district' | trans ({}, 'messages') }}</h2>
+                    </div>
+
+        </section>
+
 
     </main>
+
 
 {% endblock %}

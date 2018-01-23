@@ -1,0 +1,99 @@
+html, body{
+
+    margin :0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+body{
+    background-image: url('../img/globe-asia.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+header{
+    background-color: rgba(0,0,0,0.7);
+}
+
+.title-blog{
+    border-top: 1px solid #FFFFFF;
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    letter-spacing: 10px;
+    font-family:'Sedgwick Ave Display', cursive;
+}
+
+
+.nav-blog ul{
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-blog>ul>li{
+
+    padding: 10px;
+}
+
+.nav-blog>ul>li>a{
+
+    text-decoration: none;
+    color:#FFFFFF;
+    font-size: 24px;
+}
+
+.log-blog{
+    text-align: right;
+    padding:10px;
+
+}
+
+.log-blog>a{
+    text-decoration: none;
+    color: #FFFFFF;
+    font-weight: bold;
+    background-color:fuchsia;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.contain-menu{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.img-menu{
+
+    width: 350px;
+    border-radius: 8px;
+    border:solid 5px white;
+}
+
+.contain-country img{
+    width: 300px;
+    height: 300px;
+    border-radius: 8px;
+    border:solid 3px black;
+}
+
+.country-name{
+
+    position: relative;
+}
+.contain-country{
+    margin-top:200px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: rgba(255,255,255,0.6);
+}
+
+

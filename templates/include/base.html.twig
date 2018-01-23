@@ -3,14 +3,17 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="{{asset('../css/general.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Sedgwick+Ave+Display" rel="stylesheet">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% block body %}
-            {% block header %}
-                {% endblock %}
+            {% include 'include/header.html.twig' %}
 
-        {% endblock %}
+            {% block header %}{% endblock %}
+
+            {% block main %}{% endblock %}
+
         {% block javascripts %}{% endblock %}
     </body>
 </html>
