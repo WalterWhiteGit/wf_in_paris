@@ -16,20 +16,23 @@
 
         <section class="contain-menu">
 
+{# Search by Country #}
             <div>
                 <h2 class="choice-menu">{{ 'country' | trans ({},'messages') }}</h2>
                 <a href="{{ url('app.menu.country') }}"><img class="img-menu" src="{{ asset('/img/menu/blog-menu.jpg') }}" alt=""></a>
                     </div>
+
+{# Search by Food #}
             <div>
                 <h2 class="choice-menu">{{ 'food'| trans ({}, 'messages') }}</h2>
                 <a href="{{ url('app.menu.country') }}"><img class="img-menu" src="{{ asset('/img/menu/blog-food.jpg') }}" alt=""></a>
+                    </div>
 
-            </div>
+{# Search by District #}
             <div>
                 <h2 class="choice-menu">{{ 'district' | trans ({}, 'messages') }}</h2>
                 <a href="{{ url('app.menu.country') }}"><img class="img-menu" src="{{ asset('/img/menu/blog-district.jpg') }}" alt=""></a>
-
-            </div>
+                    </div>
 
         </section>
 
