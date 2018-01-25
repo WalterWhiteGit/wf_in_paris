@@ -8,11 +8,11 @@
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
 
-<form action="{{ path('app.security.login') }}" method="post">
-    <label for="username">Nom utilisateur:</label>
+<form action="{{ path('app.security.login') }} :" method="post">
+    <label for="username">{{ 'user_name'| trans ({},'userform') }}</label>
     <input type="text" id="username" name="_username" value="{{ last_username }}" />
 
-    <label for="password">Mot de passe:</label>
+    <label for="password">{{ 'password' | trans ({}, 'userform') }}:</label>
     <input type="password" id="password" name="_password" />
 
     {#
@@ -21,7 +21,7 @@
         <input type="hidden" name="_target_path" value="/account" />
     #}
 
-    <button type="submit">login</button>
+    <button type="submit">{{ 'go' | trans ({}, 'buttons') }}</button>
 </form>
 
     </main>
