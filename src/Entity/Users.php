@@ -1,119 +1,71 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: samy
+ * Date: 26/01/2018
+ * Time: 11:52
+ */
+
 
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
- */
-class Users
+
+class Users implements UserInterface, \Serializable
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
+    /**
+     * @ORM\Column(type="string", length=25, unique=true)
+     */
+    private $username;
 
     /**
-     * @ORM\Column(type="string", length=100, nullable=false)
+     * @ORM\Column(type="string", length=25, unique=true)
      */
-
     private $firstname;
 
     /**
-     *
-     * @ORM\Column(type="string", length=100, nullable=false)
-     *
+     * @ORM\Column(type="string", length=25, unique=true)
      */
-
     private $lastname;
-
-
-
-    /**
-     *
-     * @ORM\Column(type="string", nullable=false)
-     *
-     */
-
-    private $mail;
-
-
-    /**
-     *
-     * @ORM\Column(type="string", length=100)
-     *
-     */
-
-    private $nickname;
-
-    /**
-     * @ORM\Column(name="is_active", type="boolean")
-     */
-
-    private $isActive;
-
 
     /**
      * @ORM\Column(type="string", length=64)
      */
     private $password;
 
-    public function __construct()
-    {
-        $this->isActive = true;
-        // may not be needed, see section on salt below
-        // $this->salt = md5(uniqid('', true));
-    }
+    /**
+     * @ORM\Column(type="string", length=60, unique=true)
+     */
+    private $email;
 
-
-    public function getSalt()
-    {
-        // you *may* need a real salt depending on your encoder
-        // see section on salt below
-        return null;
-    }
-
-
-
-    public function getRoles()
-    {
-        return array('ROLE_USER');
-    }
-
-    public function eraseCredentials()
-    {
-    }
-
-    /** @see \Serializable::serialize() */
-    public function serialize()
-    {
-        return serialize(array(
-            $this->id,
-            $this->username,
-            $this->password,
-            // see section on salt below
-            // $this->salt,
-        ));
-    }
+    /**
+     * @ORM\Column(name="is_active", type="boolean")
+     */
+    private $isActive;
 
     /**
      * @return mixed
      */
-    public function getId()
+    public function getUsername()
     {
-        return $this->id;
+        return $this->username;
     }
 
     /**
-     * @param mixed $id
+     * @param mixed $nickname
      */
-    public function setId($id)
+    public function setUsername($username)
     {
-        $this->id = $id;
+        $this->username = $username;
     }
 
     /**
@@ -151,33 +103,33 @@ class Users
     /**
      * @return mixed
      */
-    public function getMail()
+    public function getPassword()
     {
-        return $this->mail;
+        return $this->password;
     }
 
     /**
-     * @param mixed $mail
+     * @param mixed $password
      */
-    public function setMail($mail)
+    public function setPassword($password)
     {
-        $this->mail = $mail;
+        $this->password = $password;
     }
 
     /**
      * @return mixed
      */
-    public function getNickname()
+    public function getEmail()
     {
-        return $this->nickname;
+        return $this->email;
     }
 
     /**
-     * @param mixed $nickname
+     * @param mixed $email
      */
-    public function setNickname($nickname)
+    public function setEmail($email)
     {
-        $this->nickname = $nickname;
+        $this->email = $email;
     }
 
     /**
@@ -196,20 +148,43 @@ class Users
         $this->isActive = $isActive;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getPassword()
+
+    public function __construct()
     {
-        return $this->password;
+        $this->isActive = true;
+        // may not be needed, see section on salt below
+        // $this->salt = md5(uniqid('', true));
     }
 
-    /**
-     * @param mixed $password
-     */
-    public function setPassword($password)
+
+
+    public function getSalt()
     {
-        $this->password = $password;
+        // you *may* need a real salt depending on your encoder
+        // see section on salt below
+        return null;
+    }
+
+
+    public function getRoles()
+    {
+        return array('ROLE_USER');
+    }
+
+    public function eraseCredentials()
+    {
+    }
+
+    /** @see \Serializable::serialize() */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt,
+        ));
     }
 
     /** @see \Serializable::unserialize() */
@@ -223,5 +198,4 @@ class Users
             // $this->salt
             ) = unserialize($serialized);
     }
-
 }
