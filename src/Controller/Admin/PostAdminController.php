@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  *
- * @Route("/admin)
+ * @Route("/admin")
  *
  */
 
@@ -36,7 +36,7 @@ class PostAdminController extends Controller
 
     /**
      *
-     *@Route("/modifier-post, name="app.admin.updatepost")
+     *@Route("/modifier-post", name="app.admin.updatepost")
      *
      */
 
