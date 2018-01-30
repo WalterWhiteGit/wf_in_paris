@@ -2,23 +2,23 @@
 
 namespace App\Repository;
 
-use App\Entity\Users;
+use App\Entity\Author;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
-class UsersRepository extends ServiceEntityRepository
+class AuthorRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Users::class);
+        parent::__construct($registry, Author::class);
     }
 
     /*
     public function findBySomething($value)
     {
-        return $this->createQueryBuilder('u')
-            ->where('u.something = :value')->setParameter('value', $value)
-            ->orderBy('u.id', 'ASC')
+        return $this->createQueryBuilder('a')
+            ->where('a.something = :value')->setParameter('value', $value)
+            ->orderBy('a.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
