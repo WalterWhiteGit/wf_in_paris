@@ -16,10 +16,9 @@ class Author
      */
     private $id;
 
-
     /**
      *
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string",length=50)
      *
      */
 
@@ -53,23 +52,19 @@ class Author
     /**
      * @return mixed
      */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+
+    /**
+     * @return mixed
+     */
     public function getFirstname()
     {
         return $this->firstname;
     }
-
-
-/*
- * Mapping
- */
-
-    /**
-     *
-     * @ORM\OneToMany(targetEntity="src\Entity\Post", mappedBy="author")
-     *
-     */
-
-    private $post;
 
     /**
      * @param mixed $firstname
