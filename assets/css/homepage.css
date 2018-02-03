@@ -1,0 +1,32 @@
+/***************************************************************************
+                                  VARIABLES CSS
+ ***************************************************************************/
+* {
+  padding: 0px;
+  margin: 0px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/***************************************************************************
+                                  MIXIN CSS
+ ***************************************************************************/
+img {
+  width: 250px; }
+
+body {
+  background-image: url("../img/globe-asia.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; }
+
+.contain-block {
+  display: flex;
+  justify-content: space-around; }
+  .contain-block div {
+    border-radius: 8px;
+    border: 2px solid blue; }
+  .contain-block h2 {
+    text-align: center; }
+
+/*# sourceMappingURL=homepage.css.map */

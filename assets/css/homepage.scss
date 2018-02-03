@@ -1,0 +1,23 @@
+@import "general";
+
+img{
+
+  width: $size-imgbloc;
+
+}
+
+body{
+
+  @include img-url('../img/globe-asia.jpg');
+
+}
+
+.contain-block{
+
+  @include contain-block(2px solid blue);
+
+   h2{
+    text-align: center;
+        }
+}
+
