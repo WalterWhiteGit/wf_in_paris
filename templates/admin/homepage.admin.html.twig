@@ -1,5 +1,6 @@
 {% extends 'include/base.html.twig' %}
 
+
 {% block stylesheets %}
 
     <link rel="stylesheet" href="{{ asset('css/admin/admin-homepage.css') }}">
@@ -9,11 +10,23 @@
 {% block main %}
 <main>
 
+    <section class="contain-menu">
+        <div class="admin-gestion">
+            <p class="admin-title">Gestion des articles</p>
+                </div>
+        <div>
+            <p class="admin-title">Gestion de la base de données</p>
+                </div>
+        <div>
+            <p class="admin-title">Tableau de bord</p>
+                </div>
+    </section>
+
    <section class="contain-menu">
 
        <div class="admin-menu">
            <div class="admin-add">
-               <h1>Ajouter un article</h1>
+               <h1><a href="{{ url('app.admin.addpost') }}">Ajouter un article</a></h1>
                 </div>
             </div>
        <div class="admin-menu">
@@ -26,10 +39,12 @@
                <h1>Supprimer un article</h1>
                 </div>
             </div>
-
    </section>
 
+
 </main>
+
+
 
 {% endblock %}
 

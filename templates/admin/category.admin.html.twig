@@ -1,0 +1,25 @@
+{% extends 'include/base.html.twig' %}
+
+
+{% block main %}
+
+<main>
+
+{{ form_start(form,{'attr':{'novalidate':'novalidate'}} ) }}
+
+    <div>
+    {{ form_label (form.name,'Categorie') }}
+    </div>
+<div>
+{{ form_widget(form.name) }}
+</div>
+
+<input type="submit" value="envoyer">
+
+{{ form_end(form) }}
+
+{% include 'include/flash.html.twig' %}
+
+</main>
+
+{% endblock %}

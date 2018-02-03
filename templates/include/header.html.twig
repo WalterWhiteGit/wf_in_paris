@@ -1,13 +1,13 @@
 <header>
     <div class="log-blog">
         {% if not is_granted('ROLE_ADMIN') %}
-        <a href="{{ url('app.security.login') }}">Se connecter /  S'inscrire</a>
+        <a href="{{ url('app.security.login') }}">{{ 'login' | trans({},'buttons') }}</a>
         {% else %}
         <a href="{{ url('app.security.logout') }}">Se deconnecter</a>
         {% endif %}
     </div>
 
-<h1 class="title-blog">Asian Food In Paris</h1>
+    <h1 class="title-blog"><a class="lien" href="{{ url ('app.homepage') }}">Asian Food In Paris...<a class="city-title">Bangkok,Hanoi,Saigon,Tokyo,Shanghai</a></a></h1>
 
 
 </header>

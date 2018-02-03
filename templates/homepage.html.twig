@@ -12,26 +12,27 @@
     <main>
 
         <h1 class="title-homepage">{{ 'title' | trans ({},'messages') }} ? </h1>
-        <p>{{ 'welcome' | trans ({},'messages') }}</p>
 
-        <section class="contain-menu">
+        <section class="contain-block">
 
 {# Search by Country #}
+
             <div>
                 <h2 class="choice-menu">{{ 'country' | trans ({},'messages') }}</h2>
-                <a href="{{ url('app.menu.country') }}"><img class="img-menu" src="{{ asset('/img/menu/blog-menu.jpg') }}" alt=""></a>
+                <a href="{{ url('app.menu.country',{'country': pays}) }}"><img class="img-menu" src="{{ asset('/img/menu/blog-menu.jpg') }}" alt=""></a>
                     </div>
 
 {# Search by Food #}
+
             <div>
                 <h2 class="choice-menu">{{ 'food'| trans ({}, 'messages') }}</h2>
-                <a href="{{ url('app.menu.country') }}"><img class="img-menu" src="{{ asset('/img/menu/blog-food.jpg') }}" alt=""></a>
+                <a href="#"><img class="img-menu" src="{{ asset('/img/menu/blog-food.jpg') }}" alt=""></a>
                     </div>
 
 {# Search by District #}
             <div>
                 <h2 class="choice-menu">{{ 'district' | trans ({}, 'messages') }}</h2>
-                <a href="{{ url('app.menu.country') }}"><img class="img-menu" src="{{ asset('/img/menu/blog-district.jpg') }}" alt=""></a>
+                <a href="#"><img class="img-menu" src="{{ asset('/img/menu/blog-district.jpg') }}" alt=""></a>
                     </div>
 
         </section>

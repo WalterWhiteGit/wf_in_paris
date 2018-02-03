@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
@@ -50,27 +51,20 @@ class Post
 
     private $updated;
 
-    /**
-     * @ORM\Column(type="smallint", length=3)
-     */
 
-    private $Author_id;
 
+/*
+ * Mapping relations
+*/
 
     /**
      *
-     * @ORM\Column(type="smallint", length=3)
+     * @ORM\ManyToOne(targetEntity="Author")
+     * @ORM\JoinColumn(nullable=true)
      */
 
-    private $Category_id;
+    private $author;
 
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * @param mixed $id
@@ -79,6 +73,49 @@ class Post
     {
         $this->id = $id;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param mixed $author
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPost()
+    {
+        return $this->post;
+    }
+
+    /**
+     * @param mixed $post
+     */
+    public function setPost($post)
+    {
+        $this->post = $post;
+    }
+
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Category")
+     * @ORM\JoinColumn(nullable=true)
+     */
+
+    private $post;
+
+
 
     /**
      * @return mixed
@@ -136,13 +173,12 @@ class Post
         return $this->Created;
     }
 
-    /**
-     * @param mixed $Created
-     */
-    public function setCreated($Created)
+
+    public function __construct()
     {
-        $this->Created = $Created;
+        $this->Created = new \DateTime();
     }
+
 
     /**
      * @return mixed
@@ -152,44 +188,13 @@ class Post
         return $this->updated;
     }
 
+
     /**
      * @param mixed $updated
      */
-    public function setUpdated()
+    public function setUpdated($updated)
     {
-        $this->updated->modify("now");
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAuthorId()
-    {
-        return $this->Author_id;
-    }
-
-    /**
-     * @param mixed $Author_id
-     */
-    public function setAuthorId($Author_id)
-    {
-        $this->Author_id = $Author_id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCategoryId()
-    {
-        return $this->Category_id;
-    }
-
-    /**
-     * @param mixed $Category_id
-     */
-    public function setCategoryId($Category_id)
-    {
-        $this->Category_id = $Category_id;
+        $this->updated = $updated;
     }
 
 

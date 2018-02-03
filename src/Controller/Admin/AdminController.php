@@ -10,6 +10,7 @@ namespace App\Controller\Admin;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class AdminController extends Controller
@@ -21,7 +22,8 @@ class AdminController extends Controller
      *
      */
 
-    public function adminAction(){
+    public function adminAction(Request $request){
+
 
 
            return new Response('<p>Bonjour Admin</p>');

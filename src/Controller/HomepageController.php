@@ -11,23 +11,44 @@ namespace App\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 
 class HomepageController extends Controller
 {
 
     /**
-     * @Route("/accueil", name ="blog-homepage")
+     * @Route("/homepage", name ="app.homepage")
      *
      */
 
-    public function homePageAction(TranslatorInterface $translator){
+    public function homePageAction(Request $request){
 
 
-        $welcome = $translator->trans('welcome');
 
-        return $this->render('homepage.html.twig',['welcome'=>$welcome]);
+        $locale = $request->getLocale();
+        switch ($locale) {
+
+            case 'fr':
+
+                $country = "par-pays";
+
+            break;
+
+            case 'en':
+                $country = "by-country";
+
+            break;
+
+            case 'es':
+                $country = "por-pais";
+
+                break;
+        };
+
+
+
+        return $this->render('homepage.html.twig',['pays'=>$country]);
     }
 
 }

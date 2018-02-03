@@ -1,0 +1,25 @@
+{% extends 'include/base.html.twig' %}
+
+{% block main %}
+<main>
+
+
+
+    {{ form_start(form,{'attr':{'novalidate':'novalidate'},'attr':{'class':'contact-form'} }) }}
+
+    {# Title #}
+    <div>
+        {{ form_label(form.title,"Titre de l'article") }}
+    </div>
+
+    <div>
+        {{ form_widget(form.title) }}
+    </div>
+
+    {# Contennu #}
+
+
+    {{ form_end(form) }}
+</main>
+
+{% endblock %}

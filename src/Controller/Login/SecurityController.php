@@ -9,10 +9,11 @@
 namespace App\Controller\Login;
 
 
+use App\Entity\Post;
+use App\Form\PostType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends Controller
@@ -27,6 +28,15 @@ class SecurityController extends Controller
 
 
     public function loginAction(Request $request, AuthenticationUtils $utils){
+
+        $user = $this->getUser();
+
+
+        if($user){
+
+            return $this->redirectToRoute('app.homepage');
+
+        }
 
         // get the login error if there is one
         $error = $utils->getLastAuthenticationError();
@@ -43,13 +53,15 @@ class SecurityController extends Controller
 
     /**
      *
-     * @Route("/accueil-admin", name="app.security.redirect")
+     * @Route("/homepage-admin", name="app.security.redirect")
      *
      */
 
     public function redirectAction(Request $request){
 
         $user = $this->getUser();
+
+
 
 
         if (in_array('ROLE_ADMIN', $user->getRoles())){
