@@ -1,0 +1,56 @@
+/***************************************************************************
+                                  MIXIN CSS
+ ***************************************************************************/
+
+//Background img
+
+@mixin img-url($url){
+
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+
+
+}
+
+// Architecture page
+
+@mixin block-line-container($c-border,$line,$i-width:$img-250){
+
+  display: flex;
+  justify-content:$line;
+
+  div{
+    width:25%;
+
+  }
+
+  h2{
+    text-align:center;
+    color:$c-white;
+    fontsize:24px;
+  }
+
+  img{
+
+    width: $i-width;
+    border-radius:8px;
+    border:$c-border 4px solid;
+
+  }
+
+}
+
+//Bloc flex
+
+@mixin contain-block($border){
+
+  display: flex;
+  justify-content: space-around;
+
+  div{
+    border-radius:8px;
+    border:$border;
+  }
+}

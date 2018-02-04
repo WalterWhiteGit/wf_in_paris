@@ -1,10 +1,6 @@
 @import "general";
 
-img{
 
-  width: $size-imgbloc;
-
-}
 
 body{
 
@@ -12,12 +8,16 @@ body{
 
 }
 
+/*
+Arguments attendus :
+$line (display flex) => space-around, space-between, center...
+$d-width (color div) => taille div en %
+ */
+
 .contain-block{
 
-  @include contain-block(2px solid blue);
+  @include block-line-container($c-green,space-around);
 
-   h2{
-    text-align: center;
-        }
-}
+  }
+
 

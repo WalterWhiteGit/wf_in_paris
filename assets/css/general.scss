@@ -1,3 +1,8 @@
+
+@import "utility/mixin";
+@import "utility/variable";
+
+
 /***************************************************************************
                                   VARIABLES CSS
  ***************************************************************************/
@@ -11,36 +16,7 @@
   box-sizing: border-box;
 }
 
-// size image
-$size-imgbloc:250px;
 
-/***************************************************************************
-                                  MIXIN CSS
- ***************************************************************************/
-
-//Background img
-
-@mixin img-url($url){
-
-  background-image: url($url);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-
-}
-
-//Bloc flex
-
-@mixin contain-block($border){
-
-  display: flex;
-  justify-content: space-around;
-
-    div{
-      border-radius:8px;
-      border:$border;
-    }
-}
 
 
 

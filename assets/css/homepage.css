@@ -1,4 +1,7 @@
 /***************************************************************************
+                                  MIXIN CSS
+ ***************************************************************************/
+/***************************************************************************
                                   VARIABLES CSS
  ***************************************************************************/
 * {
@@ -8,25 +11,29 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/***************************************************************************
-                                  MIXIN CSS
- ***************************************************************************/
-img {
-  width: 250px; }
-
 body {
   background-image: url("../img/globe-asia.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed; }
 
+/*
+Arguments attendus :
+$line (display flex) => space-around, space-between, center...
+$d-width (color div) => taille div en %
+ */
 .contain-block {
   display: flex;
   justify-content: space-around; }
   .contain-block div {
-    border-radius: 8px;
-    border: 2px solid blue; }
+    width: 25%; }
   .contain-block h2 {
-    text-align: center; }
+    text-align: center;
+    color: #FFFF;
+    fontsize: 24px; }
+  .contain-block img {
+    width: 100%;
+    border-radius: 8px;
+    border: #73B466 4px solid; }
 
 /*# sourceMappingURL=homepage.css.map */
