@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA;;6EAE6E;AAE7E;;uFAEuF;AAYvF;;uFAEuF;ACjBvF;;yGAEyG",
+"sources": ["mixin.scss","variable.scss"],
+"names": [],
+"file": "import.css"
+}
