@@ -8,15 +8,23 @@ body{
 
 }
 
-/*
-Arguments attendus :
-$line (display flex) => space-around, space-between, center...
-$d-width (color div) => taille div en %
- */
+main{
+
+  margin: 0 auto;
+
+}
+
 
 .contain-block{
+/*
+   Arguments attendus :
+   $c-border (border-color) values => variables colors file.
+   $line (justify-content)values => space-between,space-around,center,flex-end,flex-start.
+*/
 
-  @include block-line-container($c-green,space-around);
+
+  @include block-line-container(flex,$c-green,space-around);
+
 
   }
 

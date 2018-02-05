@@ -1,9 +1,15 @@
 /***************************************************************************
                                   MIXIN CSS
  ***************************************************************************/
-/***************************************************************************
-                                  VARIABLES CSS
- ***************************************************************************/
+/*************************************************************************************
+BACKGROUND ELEMENTS *******************************************************************
+**************************************************************************************/
+/*************************************************************************************
+CONTAINER ELEMENTS *******************************************************************
+**************************************************************************************/
+/********************************************************************************************************
+                                                COLOR
+ *******************************************************************************************************/
 * {
   padding: 0px;
   margin: 0px;
@@ -12,17 +18,37 @@
   box-sizing: border-box; }
 
 body {
+  height: 100%; }
+
+/***************************************************************************
+                                HEADER
+ ***************************************************************************/
+.log-blog {
+  text-align: right;
+  background-color: #000000;
+  padding: 10px; }
+  .log-blog a {
+    color: #FFFFFF;
+    text-decoration: none;
+    background-color: #D73888;
+    padding: 5px;
+    border-radius: 8px; }
+
+body {
   background-image: url("../img/globe-asia.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed; }
 
-/*
-Arguments attendus :
-$line (display flex) => space-around, space-between, center...
-$d-width (color div) => taille div en %
- */
+main {
+  margin: 0 auto; }
+
 .contain-block {
+  /*
+     Arguments attendus :
+     $c-border (border-color) values => variables colors file.
+     $line (justify-content)values => space-between,space-around,center,flex-end,flex-start.
+  */
   display: flex;
   justify-content: space-around; }
   .contain-block div {
@@ -30,10 +56,14 @@ $d-width (color div) => taille div en %
   .contain-block h2 {
     text-align: center;
     color: #FFFF;
-    fontsize: 24px; }
+    font-size: 24px;
+    border-radius: 8px 8px 0px 0px;
+    background-color: #73B466;
+    padding: 5px;
+    letter-spacing: 5px; }
   .contain-block img {
     width: 100%;
-    border-radius: 8px;
+    border-radius: 0px 0px 8px 8px;
     border: #73B466 4px solid; }
 
 /*# sourceMappingURL=homepage.css.map */

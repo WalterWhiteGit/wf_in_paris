@@ -1,0 +1,7 @@
+@import "general";
+
+.contain-form{
+
+  @include flex-container(flex,space-around);
+
+}
