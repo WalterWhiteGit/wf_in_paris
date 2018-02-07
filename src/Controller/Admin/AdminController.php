@@ -13,21 +13,51 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ *
+ * @Route("/admin")
+ *
+ */
+
 class AdminController extends Controller
 {
 
     /**
      *
-     * @Route("/admin", name="blog-admin-homepage")
+     * @Route("/gestion-des-articles", name="post-admin-homepage")
      *
      */
 
-    public function adminAction(Request $request){
+    public function postAdminAction():Response{
 
 
 
-           return new Response('<p>Bonjour Admin</p>');
+           return $this->render('admin/posts.admin.html.twig');
     }
+
+
+
+
+
+    /**
+     *
+     * @Route("/gestion-des-données", name="data-admin-action")
+     *
+     */
+
+    public function dataAdminAction():Response{
+
+
+        return $this->render('admin/data.admin.html.twig');
+
+    }
+
+
+    /**
+     *
+     *
+     *
+     */
 
 
 }

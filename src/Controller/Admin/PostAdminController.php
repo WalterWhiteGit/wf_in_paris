@@ -55,8 +55,21 @@ class PostAdminController extends Controller
         $createform = $form->createView();
 
 
+        // Validation formulaire.
+
+        if($form->isSubmitted() & $form->isValid()){
+
+
+            exit(dump($form->getData()->getImage()));
+
+        }
+
+
+
+
         return $this->render('admin/post.admin.html.twig',['form'=>$createform]);
     }
+
 
     /**
      *
