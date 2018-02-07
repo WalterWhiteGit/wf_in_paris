@@ -13,7 +13,7 @@ class Post
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="smallint")
      */
     private $id;
 
@@ -93,17 +93,19 @@ class Post
     /**
      * @return mixed
      */
-    public function getPost()
+    public function getCategory()
     {
-        return $this->post;
+        return $this->category;
     }
 
     /**
-     * @param mixed $post
+     * @param mixed $category
+     *
      */
-    public function setPost($post)
+
+    public function setCategory( $category)
     {
-        $this->post = $post;
+        $this->category = $category;
     }
 
 
@@ -113,7 +115,7 @@ class Post
      * @ORM\JoinColumn(nullable=true)
      */
 
-    private $post;
+    private $category;
 
 
 
