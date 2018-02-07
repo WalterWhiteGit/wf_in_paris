@@ -1,7 +1,28 @@
 @import "utility/import";
 
+
+
 .contain-form{
 
-  @include flex-container(flex,space-around);
+  @include flex-container(flex,none);
+  margin: 0 auto;
+  width: 50%;
+  background-color: white;
 
 }
+
+.form-login{
+  text-align: center;
+  width: 100%;
+
+  div{
+    padding: 5px;
+  }
+
+}
+
+hr{
+  margin: 0px;
+}
+
+

@@ -55,6 +55,39 @@ CONTAINER ELEMENTS *************************************************************
 
   display: $direction;
   justify-content: $position;
-  
+
 }
+
+@mixin admin-bloc($direction,$position){
+
+
+  display:$direction;
+  justify-content: $position;
+
+
+    div{
+      width: 25%;
+      min-height: 350px;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      border-radius: 8px;
+    }
+
+    h2{
+      text-align: center;
+      width: 100%;
+      background-color: $c-green;
+      color: $c-white;
+      padding: 5px;
+    }
+
+}
+
+
+
+
+
+
+
 

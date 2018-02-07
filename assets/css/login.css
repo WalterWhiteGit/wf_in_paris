@@ -12,6 +12,18 @@ CONTAINER ELEMENTS *************************************************************
  *******************************************************************************************************/
 .contain-form {
   display: flex;
-  justify-content: space-around; }
+  justify-content: none;
+  margin: 0 auto;
+  width: 50%;
+  background-color: white; }
+
+.form-login {
+  text-align: center;
+  width: 100%; }
+  .form-login div {
+    padding: 5px; }
+
+hr {
+  margin: 0px; }
 
 /*# sourceMappingURL=login.css.map */

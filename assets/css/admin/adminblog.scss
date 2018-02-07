@@ -1,0 +1,18 @@
+@import "../utility/import";
+
+.contain-menu{
+
+  @include admin-bloc(flex,space-around);
+
+
+}
+
+.admin-gestion{
+
+  background-image: url('/img/menu/blog-district.jpg');
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-attachment: fixed;
+
+
+}
