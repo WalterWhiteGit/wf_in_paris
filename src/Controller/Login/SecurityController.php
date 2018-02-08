@@ -10,7 +10,9 @@ namespace App\Controller\Login;
 
 
 use App\Entity\Post;
+use App\Entity\User;
 use App\Form\PostType;
+use App\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,9 +28,15 @@ class SecurityController extends Controller
      *
      */
 
+// Connexion Inscription.
 
     public function loginAction(Request $request, AuthenticationUtils $utils){
 
+        // Récupérer Doctrine
+        $doctrine = $this->getDoctrine();
+        $em = $doctrine->getManager();
+
+        // Récupérer le User.
         $user = $this->getUser();
 
 
@@ -38,22 +46,42 @@ class SecurityController extends Controller
 
         }
 
-        // get the login error if there is one
+        // Récupérer l'erreur si la connexion échoue
         $error = $utils->getLastAuthenticationError();
 
-        // last username entered by the user
+        // Dernier Username saisi.
         $lastUsername = $utils->getLastUsername();
+
+
+
+        // Créer Formulaire d'inscription.
+
+        $user = new User();
+        $userEntity = UserType::class;
+
+        // Création du formulaire.
+        $form = $this->createForm($userEntity,$user);
+
+
+        $form->handleRequest($request);
+
+        $createform = $form->createView();
+
 
         return $this->render('login/security.html.twig', [
             'last_username' => $lastUsername,
             'error'         => $error,
+            'form'          =>$createform
         ]);
+
 
     }
 
+// Après connexion redirection selon le profil.
+
     /**
      *
-     * @Route("/homepage-admin", name="app.security.redirect")
+     * @Route("/homepage-adminblog", name="app.security.redirect")
      *
      */
 
@@ -62,16 +90,17 @@ class SecurityController extends Controller
         $user = $this->getUser();
 
 
-
-
         if (in_array('ROLE_ADMIN', $user->getRoles())){
 
-            return $this->render('admin/homepage.admin.html.twig');
+            return $this->render('admin/homepage.adminblog.html.twig');
         }
 
 
     }
 
+
+// Déconnection avec renvoi vers la page d'accueil.
+//
     /**
      *
      * @Route("/logout", name="app.security.logout")
@@ -81,4 +110,6 @@ class SecurityController extends Controller
     public function logoutAction(){
 
     }
+
+
 }
