@@ -1,0 +1,129 @@
+{% extends 'include/base.html.twig' %}
+
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="{{ asset('build/css/login.css') }}">
+
+{%  endblock %}
+
+
+{% block main %}
+
+    <main>
+
+        <section class="contain-form">
+
+            {# Formulaire d'inscription #}
+            <div class="form-login">
+
+                <h2 class="title-form create">{{ 'n-title-form' | trans ({}, 'messages') }}</h2>
+
+                <h3>{{ 'account-title' | trans ({}, 'messages') }}</h3>
+
+                <div>
+                    {{ form_start(accountform,{'attr':{'novalidate':'novalidate'},'attr':{'class':'account-form'} }) }}
+
+
+                    {# Champ prénom #}
+                    <div>
+                        {{ form_label(accountform.firstname, 'firstname' | trans({},'userform') ) }}
+                            </div>
+
+                    <div>
+                        {{ form_widget(accountform.firstname) }}
+                            </div>
+
+                    <div>
+                        <span>{{ form_errors(accountform.firstname) }}</span>
+                            </div>
+
+                    {# Champ nom #}
+                    <div>
+                        {{ form_label(accountform.lastname,'lastname' | trans({},'userform') ) }}
+                            </div>
+                    <div>
+                        {{ form_widget(accountform.lastname) }}
+                            </div>
+                    <div>
+                        {{ form_errors(accountform.lastname) }}
+
+                            </div>
+
+                    {# Champ mail #}
+
+                    {# Champ nom #}
+                    <div>
+                        {{ form_label(accountform.mail,'Votre Email') }}
+                            </div>
+
+                    <div>
+                        {{ form_widget(accountform.mail) }}
+                            </div>
+
+                    {# Champ sexe #}
+                    <div>
+                        {{ form_label(accountform.sexe,'question' | trans({},'userform') ) }}
+                    </div>
+                    <div>
+
+                        <img class="choice-woman" src="{{ asset('../img/login/woman.png') }}" alt="">
+                        <img class="choice-man" src="{{ asset('../img/login/man.png') }}" alt="">
+
+                    </div>
+                    <div>
+                        {{ form_widget(accountform.sexe) }}
+                    </div>
+                    {# Champ pseudo #}
+
+                    <div>
+                        {{ form_label(accountform.nickname,'nickname' | trans({},'userform') ) }}
+                    </div>
+
+                    <div>
+                        {{ form_widget(accountform.nickname) }}
+                    </div>
+
+
+
+                    {# Champ mot de passe #}
+                    <div>
+                        {{ form_label(accountform.password.first,'new_password' | trans({},'userform') ) }}
+                    </div>
+
+                    <div>
+                        {{ form_widget(accountform.password.first) }}
+                    </div>
+
+                    <div>
+                        {{ form_label(accountform.password.second,'confirm_password' | trans({},'userform') ) }}
+                    </div>
+
+                    <div>
+                        {{ form_widget(accountform.password.second) }}
+                    </div>
+
+                    <input class="create" name="account" type="submit" value="{{ 'validate-account' | trans ({}, 'buttons') }}" >
+
+                    {{ form_end(accountform) }}
+                </div>
+
+                <div>
+
+                    {{ form_errors(accountform.nickname) }}
+                </div>
+
+
+                {#
+                    <input type="hidden" name="_target_path" value="/account" />
+                #}
+
+
+                {% include 'include/flash.html.twig' %}
+
+            </div>
+
+        </section>
+
+    </main>
+
+{% endblock %}
