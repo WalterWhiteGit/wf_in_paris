@@ -46,7 +46,7 @@ class Post
 
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
 
     private $updated;
@@ -56,6 +56,39 @@ class Post
 /*
  * Mapping relations
 */
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="District")
+     * @ORM\JoinColumn(nullable=true)
+     */
+
+    private $district;
+
+
+    /**
+     *
+     * @return mixed
+     *
+     */
+
+    public function getDistrict(){
+
+        return $this->district;
+    }
+
+    /**
+     *
+     * @param mixed $district
+     *
+     */
+
+    public function setDistrict($district)
+    {
+
+        $this->district=$district;
+
+    }
 
     /**
      *
@@ -116,6 +149,7 @@ class Post
      */
 
     private $category;
+
 
 
 
