@@ -8,7 +8,6 @@
 
 namespace App\Listener;
 
-
 use App\Entity\User;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -21,7 +20,7 @@ class UserListener
     private $twig;
 
 
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder,\Swift_Mailer $mailer, \Twig_Environment $twig )
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder,\Swift_Mailer $mailer, \Twig_Environment $twig)
     {
 
         $this->passwordEncoder = $passwordEncoder;
