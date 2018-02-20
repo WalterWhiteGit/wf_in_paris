@@ -14,10 +14,13 @@ class UserRepository extends ServiceEntityRepository
     }
 
 
-    public function findByUser($userId)
+    public function findByUser(int $userId)
     {
+
+        // Récupérer les données du membre
+
         $results= $this->createQueryBuilder('u')
-                       ->select('u.firstname','u.lastname','u.mail','u.username','u.sexe')
+                       ->select('u.firstname','u.lastname','u.mail','u.username','u.sexe','u.createDate')
                        ->where('u.id= :id')
                        ->setParameter('id',$userId)
                        ->getQuery()
