@@ -24,7 +24,7 @@ class UserController extends Controller
    */
 
 
-  public function userProfilAction(Request $request){
+  public function userProfilAction(Request $request) {
 
 
       $userId = $this->getUser()->getId();
@@ -33,8 +33,6 @@ class UserController extends Controller
       $repository = $this->getDoctrine()->getRepository(User::class);
 
       $profil = $repository->findByUser($userId);
-
-
 
 
 

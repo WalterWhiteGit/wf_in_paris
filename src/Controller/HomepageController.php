@@ -33,15 +33,18 @@ class HomepageController extends Controller
 
                 $country = "par-pays";
 
+
             break;
 
             case 'en':
                 $country = "by-country";
 
+
             break;
 
             case 'es':
                 $country = "por-pais";
+
 
                 break;
         };

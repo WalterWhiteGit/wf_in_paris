@@ -60,15 +60,26 @@ class PostAdminController extends Controller
         if($form->isSubmitted() & $form->isValid()){
 
 
-            exit(dump($form->getData()->getImage()));
+            //exit(dump($form->getData()->getImage()->getSize()));
+            //exit(dump($image.' '.$destination));
+
+            $data = $form->getData();
+
+            $em->persist($data);
+
+            //exit(dump($data));
+
+            $em->flush();
 
         }
 
 
-
-
         return $this->render('admin/post.admin.html.twig',['form'=>$createform]);
     }
+
+
+
+
 
 
     /**
@@ -82,6 +93,9 @@ class PostAdminController extends Controller
 
 
     }
+
+
+
 
     /**
      *
@@ -125,8 +139,8 @@ class PostAdminController extends Controller
             $add = $data->getName();
 
             try {
-            // Récupération des données
 
+            // Récupération des données
             $em->persist($data);
             $em->flush();
 

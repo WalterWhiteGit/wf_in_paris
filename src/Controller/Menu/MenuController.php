@@ -19,7 +19,7 @@ class MenuController extends Controller
 
     /**
      *
-     * @Route("/asian-food/{country}", name="app.menu.country")
+     * @Route("/asian-food", name="app.menu.country")
      */
 
 

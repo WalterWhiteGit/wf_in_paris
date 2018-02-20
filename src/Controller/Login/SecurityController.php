@@ -9,13 +9,12 @@
 namespace App\Controller\Login;
 
 
-use App\Entity\Post;
 use App\Entity\User;
-use App\Form\PostType;
 use App\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends Controller
@@ -36,6 +35,7 @@ class SecurityController extends Controller
         $doctrine = $this->getDoctrine();
         $em = $doctrine->getManager();
 
+
         // Récupérer le User.
         $user = $this->getUser();
 
@@ -52,7 +52,7 @@ class SecurityController extends Controller
         // Dernier Username saisi.
         $lastUsername = $utils->getLastUsername();
 
-
+/*
 
         // Créer Formulaire d'inscription.
 
@@ -62,20 +62,25 @@ class SecurityController extends Controller
         // Création du formulaire.
         $form = $this->createForm($userEntity,$user);
 
+        $createform = $form->createView();
 
         $form->handleRequest($request);
 
-        $createform = $form->createView();
+            if ($form->isSubmitted() && $form->isValid()) {
 
-
-        return $this->render('login/security.html.twig', [
+                 exit(dump($form->getData()));
+            }
+*/
+        return $this->render('login/login.html.twig', [
             'last_username' => $lastUsername,
             'error'         => $error,
-            'form'          =>$createform
+            //'accountform'   =>$createform
         ]);
 
 
     }
+
+
 
 // Après connexion redirection selon le profil.
 
@@ -95,6 +100,11 @@ class SecurityController extends Controller
             return $this->render('admin/homepage.adminblog.html.twig');
         }
 
+        else{
+
+            return $this->render('homepage.html.twig');
+
+        }
 
     }
 
@@ -110,6 +120,68 @@ class SecurityController extends Controller
     public function logoutAction(){
 
     }
+
+
+    /**
+     *
+     * @Route("/account", name="app.security.account")
+     *
+     */
+
+    public function createAccountAction(Request $request, UserPasswordEncoderInterface $passwordEncoder){
+
+        // Créer Formulaire d'inscription.
+
+        $doctrine = $this->getDoctrine();
+
+        $em = $doctrine->getManager();
+
+        $user = new User();
+        $userEntity = UserType::class;
+
+        // Création du formulaire.
+        $form = $this->createForm($userEntity,$user);
+
+        $form->handleRequest($request);
+
+        $createform = $form->createView();
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+
+            $data=$form->getData();
+            $username=$data->getUsername();
+
+
+
+            try{
+
+                $em->persist($data);
+                $em->flush();
+
+                $message= "Bienvenue ".$username.", votre compte est vien créé.";
+                $this->addFlash('notice',$message);
+
+            }
+
+            catch (\Doctrine\DBAL\DBALException $e){
+
+
+                    exit(dump($e));
+
+            }
+
+
+        }
+
+        return $this->render('account/create.account.html.twig', [
+            'accountform'   =>$createform
+        ]);
+
+
+    }
+
 
 
 }
