@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\District;
 use App\Entity\Post;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -10,6 +11,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Image;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class PostType extends AbstractType
 {
@@ -24,7 +27,21 @@ class PostType extends AbstractType
             ->add('content',TextareaType::class)
 
         // Champ Image du post.
-            ->add('image',FileType::class)
+            ->add('image',FileType::class,
+
+                    ['constraints'=>
+                        [
+                        new NotBlank(['message'=>'Vous n\'avez pas choisi de fichier']),
+                        new Image(['maxSize'=>'5000K',
+                                   'maxSizeMessage'=>'La taille de l\'image ne doit pas dépasser {{ limit }} {{ suffix }}',
+                                   'mimeTypes'=>['image/jpg','image/png'],
+                                   'mimeTypesMessage'=>'Le fichier doit être une image de type jpg - jpeg - png',
+                                  ])
+                        ],
+
+                    'data_class'=> null
+                    ]
+                )
 
         //Champ Auteur du post.
             ->add('author',EntityType::class,
@@ -33,11 +50,21 @@ class PostType extends AbstractType
                   'multiple'=>false
                 ]
                 )
+
+        // Champ Quartier
+            ->add('district',EntityType::class,
+                    [
+                       'class'=>'App\Entity\District',
+                       'choice_label'=>'name',
+                       'multiple'=>false
+                    ]
+                 )
         //Champ catégorie du post.
             ->add('category',EntityType::class,
-                 ['class'=>'App\Entity\Category',
-                  'choice_label'=>'name',
-                  'multiple'=>false
+                    [
+                        'class'=>'App\Entity\Category',
+                        'choice_label'=>'country',
+                        'multiple'=>false
                      ]
                  )
 
