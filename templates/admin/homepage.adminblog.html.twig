@@ -1,0 +1,32 @@
+{% extends 'include/base.html.twig' %}
+
+
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="{{ asset('build/css/admin/adminblog.css') }}">
+
+{% endblock %}
+
+{% block main %}
+<main>
+
+    <section class="contain-menu">
+
+        <div class="admin-gestion">
+            <h2 class="admin-title"><a href="{{ url('post-admin-homepage') }}">Gestion des articles</a></h2>
+                </div>
+        <div>
+            <h2 class="admin-title"><a href="{{ url('data-admin-action') }}">Gestion de la base de données</a></h2>
+                </div>
+        <div>
+            <h2 class="admin-title">Tableau de bord</h2>
+                </div>
+    </section>
+
+</main>
+
+
+
+{% endblock %}
+
+

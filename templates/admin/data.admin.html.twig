@@ -1,0 +1,48 @@
+{% extends 'include/base.html.twig' %}
+
+
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="{{ asset('css/admin/admin-homepage.css') }}">
+
+{% endblock %}
+
+{% block main %}
+    <main>
+
+
+        <section class="contain-menu">
+
+            <div class="admin-menu">
+
+                <div class="admin-add">
+
+                    <h1><a href="{{ url('app.admin.addpost') }}">Ajouter</a></h1>
+                        <ul>
+                            <li><a href="#">Un Auteur</a></li>
+                            <li><a href="{{ url('app.admin.category') }}">Une Catégorie d'article</a></li>
+                        </ul>
+                    </div>
+
+             </div>
+
+            <div class="admin-menu">
+                <div class="admin-update">
+                        <h1>Modifier</h1>
+                    </div>
+                </div>
+
+            <div class="admin-menu">
+                <div class="admin-delete">
+                        <h1>Supprimer</h1>
+                    </div>
+                </div>
+
+        </section>
+
+
+    </main>
+
+
+
+{% endblock %}

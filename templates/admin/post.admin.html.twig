@@ -1,5 +1,7 @@
 {% extends 'include/base.html.twig' %}
-
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/css/admin/adminpost.css') }}">
+    {% endblock %}
 {% block main %}
 <main>
 
@@ -7,17 +9,62 @@
 
     {{ form_start(form,{'attr':{'novalidate':'novalidate'},'attr':{'class':'contact-form'} }) }}
 
+    <div>
+        {{ form_label(form.author,"Auteur de l'article",{'label_attr':{'class':'label-form'} }) }}
+        </div>
+
+    <div>
+        {{ form_widget(form.author) }}
+        </div>
+
+    <div>
+        {{ form_label(form.district,"Quartier",{'label_attr':{'class':'label-form'} }) }}
+        </div>
+
+    <div>
+        {{ form_widget(form.district) }}
+        </div>
+
+    <div>
+        {{ form_label(form.category,'Tye de cuisine',{'label_attr':{'class':'label-form'} }) }}
+        </div>
+    <div>
+        {{ form_widget(form.category) }}
+        </div>
+
     {# Title #}
     <div>
-        {{ form_label(form.title,"Titre de l'article") }}
-    </div>
+        {{ form_label(form.title,"Titre de l'article",{'label_attr':{'class':'label-form'} }) }}
+        </div>
+
 
     <div>
         {{ form_widget(form.title) }}
-    </div>
+        </div>
 
     {# Contennu #}
+    <div>
+        {{ form_label(form.content,"Description de l'article") }}
+        </div>
 
+    <div>
+        {{ form_widget(form.content) }}
+        </div>
+{# Champ image #}
+
+    <div>
+        {{ form_label(form.image,"Image de couverture") }}
+        </div>
+    <div>
+        {{ form_widget(form.image) }}
+        </div>
+    {# Message d'erreur #}
+    <div class="error-form">{{ form_errors(form.image) }}</div>
+
+
+    <div>
+        <input type="submit" value="Envoyer">
+        </div>
 
     {{ form_end(form) }}
 </main>

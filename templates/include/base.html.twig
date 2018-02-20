@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="stylesheet" href="{{asset('build/css/homepage.css') }}">
+        <link rel="stylesheet" href="{{asset('build/css/general.css') }}">
         <link href="https://fonts.googleapis.com/css?family=Sedgwick+Ave+Display" rel="stylesheet">
         {% block stylesheets %}{% endblock %}
     </head>
@@ -12,8 +12,11 @@
 
             {% block header %}{% endblock %}
 
-            {% block main %}{% endblock %}
+            {% block main %}
+                <main></main>
+            {% endblock %}
 
         {% block javascripts %}{% endblock %}
     </body>
+    <script src="{{ asset('build/js/app.js') }}"></script>
 </html>

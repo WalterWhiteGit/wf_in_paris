@@ -2,14 +2,14 @@
 
 {% block stylesheets  %}
 
-    <link rel="stylesheet" href="{{ asset ('css/homepage/homepage.css') }}">
+    <link rel="stylesheet" href="{{ asset ('build/css/homepage.css') }}">
 
     {% endblock %}
 
 {% block main%}
 
 
-    <main>
+
 
         <h1 class="title-homepage">{{ 'title' | trans ({},'messages') }} ? </h1>
 
@@ -19,7 +19,7 @@
 
             <div>
                 <h2 class="choice-menu">{{ 'country' | trans ({},'messages') }}</h2>
-                <a href="{{ url('app.menu.country',{'country': pays}) }}"><img class="img-menu" src="{{ asset('/img/menu/blog-menu.jpg') }}" alt=""></a>
+                <a href="{{ url('app.menu.country') }}"><img class="img-menu" src="{{ asset('/img/menu/blog-menu.jpg') }}" alt=""></a>
                     </div>
 
 {# Search by Food #}
@@ -38,7 +38,7 @@
         </section>
 
 
-    </main>
+
 
 
 {% endblock %}

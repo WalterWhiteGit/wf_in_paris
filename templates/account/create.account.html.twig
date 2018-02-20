@@ -76,11 +76,11 @@
                     {# Champ pseudo #}
 
                     <div>
-                        {{ form_label(accountform.nickname,'nickname' | trans({},'userform') ) }}
+                        {{ form_label(accountform.username,'nickname' | trans({},'userform') ) }}
                     </div>
 
                     <div>
-                        {{ form_widget(accountform.nickname) }}
+                        {{ form_widget(accountform.username) }}
                     </div>
 
 
@@ -109,7 +109,7 @@
 
                 <div>
 
-                    {{ form_errors(accountform.nickname) }}
+                    {{ form_errors(accountform.username) }}
                 </div>
 
 

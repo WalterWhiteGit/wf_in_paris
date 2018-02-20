@@ -1,11 +1,20 @@
 <header>
     <div class="log-blog">
-        {% if not is_granted('ROLE_ADMIN') %}
+
+        {% if not is_granted(['ROLE_ADMIN','ROLE_USER']) %}
         <a href="{{ url('app.security.login') }}">{{ 'login' | trans({},'buttons') }}</a>
+
         {% else %}
-        <a href="{{ url('app.security.logout') }}">Se deconnecter</a>
+
+            {% if is_granted(['ROLE_USER']) %}
+
+                <a href="{{ url('app.user.profil') }}">Mon profil</a>
+                {% endif %}
+
+        <a href="{{ url('app.security.logout') }}">Se deconnecter ({{ app.user.username }})</a>
         {% endif %}
-    </div>
+
+        </div>
 
     <h1 class="title-blog"><a class="lien" href="{{ url ('app.homepage') }}">Asian Food In Paris...<a class="city-title">Bangkok,Hanoi,Saigon,Tokyo,Shanghai</a></a></h1>
 

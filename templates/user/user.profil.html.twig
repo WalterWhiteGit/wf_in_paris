@@ -1,0 +1,28 @@
+{% extends 'include/base.html.twig' %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block main %}
+
+    <section>
+
+{# Informations membre #}
+
+        <div class="contain-perfil">
+            <div>
+                <p>Prénom : {{ profil.firstname }}</p>
+                <p>Nom: {{ profil.lastname }}</p>
+                <p>Nom de Membre : {{ profil.username }}</p>
+                <p>Date d'inscription: {{ profil.createDate | date('d/m/Y') }}</p>
+            </div>
+
+            <div>
+                <h1>Mes articles favoris</h1>
+
+                </div>
+        </div>
+
+        </section>
+
+{% endblock %}

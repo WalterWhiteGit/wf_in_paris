@@ -21,6 +21,7 @@
 
 
             <h3>{{ 'log-title' | trans ({}, 'messages') }}</h3>
+
             <form action="{{ path('app.security.login') }} " method="post">
 
 {# Champ identifiant de connexion #}
@@ -31,16 +32,21 @@
                     <input type="text" id="username" name="_username" value="{{ last_username }}" />
                          </div>
 {# Champ mot de passe #}
+
                 <div>
                      <label for="password">{{ 'password' | trans ({}, 'userform') }}</label>
                          </div>
+
                 <div>
                     <input type="password" id="password" name="_password" />
                          </div>
                 {# <input type="hidden" name="_target_path" value="/account"/> #}
 
+
 {# Bouton connexion #}
                     <button class="log" type="submit">{{ 'go' | trans ({}, 'buttons') }}</button>
+
+
 {# Lien: MDP oublié #}
                 <div class="forgot-pwd">
                     <a class="forgot-link" href="#">{{ 'forgot_password' | trans ({}, 'userform') }}</a>
@@ -55,65 +61,85 @@
 
             <hr>
 
+
  {# Formulaire d'inscription #}
             <div class="form-login">
+
                 <h2 class="title-form create">{{ 'n-title-form' | trans ({}, 'messages') }}</h2>
 
                 <h3>{{ 'account-title' | trans ({}, 'messages') }}</h3>
 
                     <div>
-                        {{ form_start(form,{'attr':{'novalidate':'novalidate'},'attr':{'class':'account-form'} }) }}
+                        {{ form_start(accountform,{'attr':{'novalidate':'novalidate'},'attr':{'class':'account-form'} }) }}
 
 {# Champ prénom #}
                              <div>
-                                 {{ form_label(form.firstname,'Votre prénom') }}
+                                 {{ form_label(accountform.firstname, 'firstname' | trans({},'userform') ) }}
                                     </div>
                              <div>
-                                 {{ form_widget(form.firstname) }}
+                                 {{ form_widget(accountform.firstname) }}
                                     </div>
 
 {# Champ nom #}
                             <div>
-                                {{ form_label(form.lastname,'Votre nom') }}
+                                {{ form_label(accountform.lastname,'lastname' | trans({},'userform') ) }}
                                     </div>
                             <div>
-                                {{ form_widget(form.lastname) }}
+                                {{ form_widget(accountform.lastname) }}
                                     </div>
 {# Champ sexe #}
                             <div>
-                                {{ form_label(form.sexe,'Vous êtes') }}
+                                {{ form_label(accountform.sexe,'question' | trans({},'userform') ) }}
                                     </div>
                             <div>
-                                {{ form_widget(form.sexe) }}
+
+                                <img class="choice-woman" src="{{ asset('../img/login/woman.png') }}" alt="">
+                                <img class="choice-man" src="{{ asset('../img/login/man.png') }}" alt="">
+
                                     </div>
+                            <div>
+                                {{ form_widget(accountform.sexe) }}
+                                    </div>
+{# Champ pseudo #}
+
+                            <div>
+                                {{ form_label(accountform.nickname,'nickname' | trans({},'userform') ) }}
+                                </div>
+
+                            <div>
+                                {{ form_widget(accountform.nickname) }}
+                                </div>
+
+
 
 {# Champ mot de passe #}
                             <div>
-                                {{ form_label(form.password.first,'Créer votre Mot de passe') }}
+                                {{ form_label(accountform.password.first,'new_password' | trans({},'userform') ) }}
                                     </div>
 
                             <div>
-                                {{ form_widget(form.password.first) }}
+                                {{ form_widget(accountform.password.first) }}
                                     </div>
 
                             <div>
-                                {{ form_label(form.password.second,'Confirmer votre mot de passe') }}
+                                {{ form_label(accountform.password.second,'confirm_password' | trans({},'userform') ) }}
                                     </div>
 
                             <div>
-                                {{ form_widget(form.password.second) }}
+                                {{ form_widget(accountform.password.second) }}
                                     </div>
 
+                        <input class="create" name="account" type="submit" value="{{ 'validate-account' | trans ({}, 'buttons') }}" >
 
-                        {{ form_end(form) }}
+                        {{ form_end(accountform) }}
                     </div>
+
                     {#
                         <input type="hidden" name="_target_path" value="/account" />
                     #}
 
-                    <button class="create" type="submit">{{ 'validate-account' | trans ({}, 'buttons') }}</button>
 
-                </form>
+
 
             </div>
 
