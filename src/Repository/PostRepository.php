@@ -13,16 +13,21 @@ class PostRepository extends ServiceEntityRepository
         parent::__construct($registry, Post::class);
     }
 
-    /*
-    public function findBySomething($value)
+
+    public function findAllPost()
     {
-        return $this->createQueryBuilder('p')
-            ->where('p.something = :value')->setParameter('value', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+
+        $results = $this->createQueryBuilder('p')
+                        ->select('p.Title','p.Created','p.Content','p.Image','(d.name) AS quartier ','a.firstname','c.name','c.country')
+                        ->innerJoin('p.author','a')
+                        ->innerJoin('p.category','c')
+                        ->innerJoin('p.district','d')
+                        ->orderBy('p.Created')
+                        ->getQuery()
+                        ->getResult()
+
         ;
+
+        return $results;
     }
-    */
 }
