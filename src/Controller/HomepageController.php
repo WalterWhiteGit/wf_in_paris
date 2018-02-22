@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 
+use App\Entity\Post;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,7 +26,6 @@ class HomepageController extends Controller
     public function homePageAction(Request $request){
 
 
-
         $locale = $request->getLocale();
         switch ($locale) {
 
@@ -33,25 +33,25 @@ class HomepageController extends Controller
 
                 $country = "par-pays";
 
-
             break;
 
             case 'en':
                 $country = "by-country";
-
 
             break;
 
             case 'es':
                 $country = "por-pais";
 
-
                 break;
         };
 
+        $doctrine = $this->getDoctrine();
+        $repository = $doctrine->getRepository(Post::class);
+        $return=$repository->findAllPost();
 
 
-        return $this->render('homepage.html.twig',['pays'=>$country]);
+        return $this->render('homepage.html.twig',['pays'=>$country,'return'=>$return]);
     }
 
 }
