@@ -14,6 +14,7 @@ class PostRepository extends ServiceEntityRepository
     }
 
 
+// Afficher tous les posts sauf le plus récent.
     public function findAllPost()
     {
 
@@ -22,9 +23,30 @@ class PostRepository extends ServiceEntityRepository
                         ->innerJoin('p.author','a')
                         ->innerJoin('p.category','c')
                         ->innerJoin('p.district','d')
-                        ->orderBy('p.Created')
+                        ->setFirstResult(1)
+                        ->orderBy('p.Created','Desc')
                         ->getQuery()
                         ->getResult()
+
+        ;
+
+        return $results;
+    }
+
+// Afficher le post le + récent.
+
+
+    public function findLastPost ()
+    {
+        $results = $this->createQueryBuilder('p')
+            ->select('p.Title','p.Created','p.Content','p.Image','(d.name) AS quartier ','a.firstname','c.name','c.country')
+            ->innerJoin('p.author','a')
+            ->innerJoin('p.category','c')
+            ->innerJoin('p.district','d')
+            ->setMaxResults(1)
+            ->orderBy('p.Created','Desc')
+            ->getQuery()
+            ->getResult()
 
         ;
 
