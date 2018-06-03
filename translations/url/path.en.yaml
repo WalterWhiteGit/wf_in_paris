@@ -1,0 +1,8 @@
+user:
+    profil:
+        admin: my-profile
+message:
+   erreur:
+        13: Erreur d'identifiant. Cet identifiant est inconnu
+
+
