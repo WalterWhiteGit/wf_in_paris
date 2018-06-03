@@ -5,19 +5,24 @@ security:
             memory:
                users:
                    admin:
-                       password: $2y$12$46EVu7X2YfaTp8JInVBwauYz.4Eq04qvAhnQOGBRGWcwGPvbA0lVa
+                       password: $2y$12$T/Ta0gzV60hPRrsv2Peyeu8DUFmMmjGpO7H0rO0wwUgnIWmiIwgl2
                        roles: 'ROLE_ADMIN'
         user_provider:
                    entity:
-                       class: App\Entity\Users
+                       class: App\Entity\User
+                       property: username
 
+
+        all_providers:
+            chain:
+                providers: [ in_memory, user_provider]
 
     encoders:
         Symfony\Component\Security\Core\User\User:
             algorithm: bcrypt
             cost: 12
 
-        Entity\Users:
+        App\Entity\User:
             algorithm: bcrypt
             cost: 12
 
@@ -26,6 +31,7 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
+            provider: all_providers
             anonymous: ~
             # activate different ways to authenticate
             #http_basic: ~
@@ -39,9 +45,9 @@ security:
                 target : app.homepage
 
     access_control:
-            # require ROLE_ADMIN ffor /admin
+            # require ROLE_ADMIN for /admin
             - { path: ^/admin, roles: ROLES_ADMIN }
+            - { path: ^/admin/, roles: ROLES_ADMIN }
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-
             # form_login: ~
             # https://symfony.com/doc/current/security/form_login_setup.html

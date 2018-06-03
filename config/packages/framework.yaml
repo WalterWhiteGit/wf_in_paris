@@ -1,6 +1,6 @@
 framework:
     secret: '%env(APP_SECRET)%'
-    #default_locale: en
+    default_locale: '%locale%'
     #csrf_protection: ~
     #http_method_override: true
 
@@ -13,6 +13,8 @@ framework:
     #fragments: ~
     php_errors:
         log: true
+
+    #validation: { enabled: true }
 
     cache:
         # The app cache caches to the filesystem by default. Other options include:
