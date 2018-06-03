@@ -2,8 +2,13 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\District;
+use App\Entity\Restaurant;
 use App\Entity\Post;
+use App\Repository\CategoryRepository;
+use App\Repository\DistrictRepository;
+use App\Repository\RestaurantRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -34,7 +39,7 @@ class PostType extends AbstractType
                         new NotBlank(['message'=>'Vous n\'avez pas choisi de fichier']),
                         new Image(['maxSize'=>'5000K',
                                    'maxSizeMessage'=>'La taille de l\'image ne doit pas dépasser {{ limit }} {{ suffix }}',
-                                   'mimeTypes'=>['image/jpg','image/png'],
+                                   'mimeTypes'=>['image/jpeg','image/png'],
                                    'mimeTypesMessage'=>'Le fichier doit être une image de type jpg - jpeg - png',
                                   ])
                         ],
@@ -47,8 +52,9 @@ class PostType extends AbstractType
             ->add('author',EntityType::class,
                 ['class'=>'App\Entity\Author',
                   'choice_label'=>'Firstname',
-                  'multiple'=>false
-                ]
+                  'multiple'=>false,
+
+                    ]
                 )
 
         // Champ Quartier
@@ -56,17 +62,39 @@ class PostType extends AbstractType
                     [
                        'class'=>'App\Entity\District',
                        'choice_label'=>'name',
-                       'multiple'=>false
+                       'multiple'=>false,
+                        'query_builder' => function (DistrictRepository $district){
+
+                            return  $district->displayByOrderName();
+                        }
                     ]
                  )
         //Champ catégorie du post.
             ->add('category',EntityType::class,
                     [
                         'class'=>'App\Entity\Category',
-                        'choice_label'=>'country',
-                        'multiple'=>false
+                        'choice_label'=>'name',
+                        'multiple'=>false,
+                        'query_builder'=> function (CategoryRepository $category){
+
+                            return $category->displayByOrderName();
+
+                        }
+
                      ]
                  )
+
+            ->add('restaurant',EntityType::class,
+                    [
+                        'class'=>'App\Entity\Restaurant',
+                        'choice_label'=>'name',
+                        'multiple'=>false,
+                        'query_builder'=> function (RestaurantRepository $restaurant){
+
+                            return $restaurant->displayByOrderName();
+                        }
+                    ]
+                )
 
             ;
 
@@ -77,6 +105,7 @@ class PostType extends AbstractType
         $resolver->setDefaults([
             // uncomment if you want to bind to a class
             'data_class' => Post::class,
+
         ]);
     }
 }
