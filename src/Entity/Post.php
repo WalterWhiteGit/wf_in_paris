@@ -7,6 +7,7 @@ use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
+ * @ORM\EntityListeners({"App\Listener\PostListener"})
  */
 class Post
 {
@@ -72,6 +73,7 @@ class Post
      *
      */
 
+
     public function getDistrict(){
 
         return $this->district;
@@ -91,12 +93,25 @@ class Post
     }
 
     /**
+    *
+    * @ORM\ManyToOne(targetEntity="Author")
+    * @ORM\JoinColumn(nullable=true)
+    */
+
+    private $author;
+
+    /**
      *
-     * @ORM\ManyToOne(targetEntity="Author")
+     * @ORM\ManyToOne(targetEntity="Restaurant")
      * @ORM\JoinColumn(nullable=true)
      */
 
-    private $author;
+    private $restaurant;
+
+
+    /**
+     * @ORM\OneToOne(targetEntity="Restaurant")
+     */
 
 
     /**
@@ -121,6 +136,23 @@ class Post
     public function setAuthor($author)
     {
         $this->author = $author;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getRestaurant(){
+        return -$this->restaurant;
+    }
+
+    /**
+     * @param mixed $restaurant
+     */
+
+    public function setRestaurant($restaurant){
+
+        $this->restaurant = $restaurant;
     }
 
     /**
