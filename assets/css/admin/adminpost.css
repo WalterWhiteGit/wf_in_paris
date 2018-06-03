@@ -1,0 +1,15 @@
+.post-form {
+  width: 50%;
+  border: solid 2px #8fd56c;
+  margin: 0 auto;
+  text-align: center; }
+  .post-form label {
+    font-size: 24px; }
+  .post-form input, .post-form select, .post-form textarea {
+    font-size: 24px;
+    margin: 5px; }
+
+.error-form {
+  color: red; }
+
+/*# sourceMappingURL=adminpost.css.map */
