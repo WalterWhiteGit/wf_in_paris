@@ -2,13 +2,15 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('build/css/admin/adminpost.css') }}">
     {% endblock %}
+
 {% block main %}
 <main>
 
+    <h1>Publier un nouvel article</h1>
 
+    {{ form_start(form,{'attr':{'novalidate':'novalidate'},'attr':{'class':'post-form'} }) }}
 
-    {{ form_start(form,{'attr':{'novalidate':'novalidate'},'attr':{'class':'contact-form'} }) }}
-
+    {# Auteur #}
     <div>
         {{ form_label(form.author,"Auteur de l'article",{'label_attr':{'class':'label-form'} }) }}
         </div>
@@ -17,6 +19,7 @@
         {{ form_widget(form.author) }}
         </div>
 
+    {# Quartier #}
     <div>
         {{ form_label(form.district,"Quartier",{'label_attr':{'class':'label-form'} }) }}
         </div>
@@ -25,13 +28,23 @@
         {{ form_widget(form.district) }}
         </div>
 
+    {# Catégorie #}
     <div>
-        {{ form_label(form.category,'Tye de cuisine',{'label_attr':{'class':'label-form'} }) }}
+        {{ form_label(form.category,'Type de cuisine',{'label_attr':{'class':'label-form'} }) }}
         </div>
     <div>
         {{ form_widget(form.category) }}
         </div>
 
+    {# Restaurant #}
+
+    <div>
+        {{ form_label(form.restaurant,'Choisir restaurant',{'label_attr':{'class':'label-form'} }) }}
+        </div>
+
+    <div>
+        {{ form_widget(form.restaurant) }}
+        </div>
     {# Title #}
     <div>
         {{ form_label(form.title,"Titre de l'article",{'label_attr':{'class':'label-form'} }) }}
@@ -48,7 +61,7 @@
         </div>
 
     <div>
-        {{ form_widget(form.content) }}
+        {{ form_widget(form.content,{'attr':{ 'rows':'5', 'cols':'50'}} ) }}
         </div>
 {# Champ image #}
 
