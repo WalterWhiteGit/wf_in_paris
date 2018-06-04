@@ -19,7 +19,7 @@ class PostRepository extends ServiceEntityRepository
     {
 
         $results = $this->createQueryBuilder('p')
-                        ->select('p.Title','p.Created','p.Content','p.Image','(d.name) AS quartier ','a.firstname','c.name','c.country')
+                        ->select('p.Title','p.Content','p.Image','p.Synopsis','c.country')
                         ->innerJoin('p.author','a')
                         ->innerJoin('p.category','c')
                         ->innerJoin('p.district','d')
@@ -39,7 +39,7 @@ class PostRepository extends ServiceEntityRepository
     public function findLastPost ()
     {
         $results = $this->createQueryBuilder('p')
-            ->select('p.Title','p.Created','p.Content','p.Image','(d.name) AS quartier ','a.firstname','c.name','c.country')
+            ->select('p.Title','p.Created','p.Synopsis','p.Image','(d.name) AS quartier ','a.firstname','c.name','c.country')
             ->innerJoin('p.author','a')
             ->innerJoin('p.category','c')
             ->innerJoin('p.district','d')
