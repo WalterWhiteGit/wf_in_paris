@@ -17,7 +17,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Image;
+use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 class PostType extends AbstractType
 {
@@ -26,18 +28,37 @@ class PostType extends AbstractType
         $builder
 
         // Champ Titre du post.
-            ->add('title',TextType::class)
+
+
+
+            ->add('title',TextType::class,
+                    ['constraints'=>
+                        [
+                            new NotBlank(['message'=>'Le champ ne doit pas être vide']),
+                            new Length(['min'=>6,
+                                        'max'=>100,
+                                        'minMessage'=>'Le titre doit être supérieur à {{ limit }} caractéres',
+                                        'maxMessage'=>'Le titre doit être inférieur à {{ limit }} caractéres'
+                                ])
+
+                        ]
+                    ]
+            )
 
         // Champ Description du post.
-            ->add('content',TextareaType::class)
+            ->add('content',CKEditorType::class,
+        [
+            'config'=>['toolbar'=>'standard']
+        ]
+            )
 
         // Champ Image du post.
             ->add('image',FileType::class,
 
                     ['constraints'=>
                         [
-                        new NotBlank(['message'=>'Vous n\'avez pas choisi de fichier']),
-                        new Image(['maxSize'=>'5000K',
+                            new NotBlank(['message'=>'Vous n\'avez pas choisi de fichier']),
+                            new Image(['maxSize'=>'5000K',
                                    'maxSizeMessage'=>'La taille de l\'image ne doit pas dépasser {{ limit }} {{ suffix }}',
                                    'mimeTypes'=>['image/jpeg','image/png'],
                                    'mimeTypesMessage'=>'Le fichier doit être une image de type jpg - jpeg - png',
