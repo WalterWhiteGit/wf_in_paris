@@ -8,12 +8,63 @@
 
 {% block main%}
 
+    <main>
+
+    <div class="contain-posts">
+
+        <h1 class="title-homepage">{{ 'title' | trans ({},'messages') }}</h1>
+
+        <section class="contain-lastpost">
+
+            <div class="content-lastpost">
+
+                {% for post in onepost %}
+
+{# img article #}
+                <img src="{{ asset('../img/post/'~post.country~'/'~post.Image) }}" alt="image d'un plat">
+
+{# contenu article #}
+                <div class="text-lastpost">
+                    <div>
+                        <span>Spécialité : {{ post.name }}</span>
+                        <span>Publié le : {{ post.Created | date ('d-m-Y') }}</span>
+                        </div>
+                    <div>
+                         <h2>{{ post.Title }}</h2>
+                         <div>{{ post.Content | raw }}</div>
+
+                        </div>
+                </div>
+
+                  {%  endfor %}
+            </div>
+
+        </section>
 
 
+        <section class="contain-post">
 
-        <h1 class="title-homepage">{{ 'title' | trans ({},'messages') }} ? </h1>
+            <h1>Nos autres articles...</h1>
+           <div>
+            {% for post in allpost %}
+
+             <article>
+                <h1>{{ post.Title }}</h1>
+                <img style="width: 300px;" src="{{ asset('../img/post/'~post.country~'/'~post.Image) }}" alt="">
+                <p>{{ post.Content | truncate(100) }}</p>
+
+             </article>
+                {% endfor %}
+
+           </div>
+
+        </section>
+
+    </div>
 
         <section class="contain-block">
+
+            <h1>{{ 'title_restaurant' | trans ({},'messages') }}</h1>
 
 {# Search by Country #}
 
@@ -36,9 +87,5 @@
                     </div>
 
         </section>
-
-
-
-
-
+    </main>
 {% endblock %}
