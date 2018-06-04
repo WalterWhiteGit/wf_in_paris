@@ -9,6 +9,7 @@ use App\Entity\Post;
 use App\Repository\CategoryRepository;
 use App\Repository\DistrictRepository;
 use App\Repository\RestaurantRepository;
+use function PHPSTORM_META\type;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -45,12 +46,7 @@ class PostType extends AbstractType
                     ]
             )
 
-        // Champ Description du post.
-            ->add('content',CKEditorType::class,
-        [
-            'config'=>['toolbar'=>'standard']
-        ]
-            )
+
 
         // Champ Image du post.
             ->add('image',FileType::class,
@@ -116,6 +112,19 @@ class PostType extends AbstractType
                         }
                     ]
                 )
+
+            // Champ synopsis de l'article
+
+            ->add('synopsis',TextareaType::class
+
+                )
+
+            // Champ Description du post.
+            ->add('content',CKEditorType::class,
+                [
+                    'config'=>['toolbar'=>'standard']
+                ]
+            )
 
             ;
 
